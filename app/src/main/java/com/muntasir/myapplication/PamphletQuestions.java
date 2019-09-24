@@ -50,12 +50,12 @@ public class PamphletQuestions {
     };
 
 
-    private String pamphletChoices [][] = {
-            {"2", "3", "4"},
-            {"1", "2", "3"},
-            {"2 or less", "4 or less", "8 or less"},
-            {"1-4", "5-8", "9 or more"}
-    };
+//    private String pamphletChoices [][] = {
+//            {"2", "3", "4"},
+//            {"1", "2", "3"},
+//            {"2 or less", "4 or less", "8 or less"},
+//            {"1-4", "5-8", "9 or more"}
+//    };
 
 
 
@@ -68,27 +68,29 @@ public class PamphletQuestions {
         String question = pamphletQuestions[a];
         return question;
     }
+
+    //QUESTIONS returns the array
     public String[] getQuestions()
     {
         return pamphletQuestions;
     }
 
 
-    public String getChoice1(int a) {
-        String choice0 = pamphletChoices[a][0];
-        return choice0;
-    }
+//    public String getChoice1(int a) {
+//        String choice0 = pamphletChoices[a][0];
+//        return choice0;
+//    }
 
 
-    public String getChoice2(int a) {
-        String choice1 = pamphletChoices[a][1];
-        return choice1;
-    }
+//    public String getChoice2(int a) {
+//        String choice1 = pamphletChoices[a][1];
+//        return choice1;
+//    }
 
-    public String getChoice3(int a) {
-        String choice2 = pamphletChoices[a][2];
-        return choice2;
-    }
+//    public String getChoice3(int a) {
+//        String choice2 = pamphletChoices[a][2];
+//        return choice2;
+//    }
 
 //    public String getCorrectAnswer(int a) {
 //        String answer = mCorrectAnswers[a];

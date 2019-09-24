@@ -12,15 +12,16 @@ public class QuizAudit extends AppCompatActivity {
 
     private PamphletQuestions mQuestionLibrary = new PamphletQuestions();
 
-    //private TextView mScoreView;
-    private TextView mQuestionView;
-    private Button mButtonChoice1;
-    private Button mButtonChoice2;
-    private Button mButtonChoice3;
 
-    //private String mAnswer;
+//    private TextView mScoreView;
+//    private Button mButtonChoice1;
+//    private String mAnswer;
+
+    private TextView mQuestionView;
+    private Button mYes;
+    private Button mNo;
     private int mScore = 0;
-    private int mQuestionNumber = 0;
+    private int mQuestionNumber = -1;  //set to -1 since onCreate() increases the number by 1 while starting
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,22 +30,17 @@ public class QuizAudit extends AppCompatActivity {
 
        // mScoreView = (TextView)findViewById(R.id.score);
         mQuestionView = (TextView)findViewById(R.id.question);
-        mButtonChoice1 = (Button)findViewById(R.id.choice1);
-        mButtonChoice2 = (Button)findViewById(R.id.choice2);
-        mButtonChoice3 = (Button)findViewById(R.id.choice3);
+        mYes = (Button)findViewById(R.id.yesButton);
+        mNo = (Button)findViewById(R.id.noButton);
 
         updateQuestion();
 
-        //button 1 will get 1 point
-        //button 2 will get 2 point
-        //button 3 will get 3 point
-        //button 4 will get 4 point
+        //button yes will get 1 point
 
-        //Start of Button Listener for Button1
-        mButtonChoice1.setOnClickListener(new View.OnClickListener(){
+        //Yes button listener
+        mYes.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                //My logic for Button goes in here
                     mScore = mScore + 1;
                     updateQuestion();
                     //This line of code is optiona
@@ -57,48 +53,21 @@ public class QuizAudit extends AppCompatActivity {
             }
         });
 
-        //End of Button Listener for Button1
 
-        //Start of Button Listener for Button2
-        mButtonChoice2.setOnClickListener(new View.OnClickListener(){
+        //No button listener
+        //no point
+        mNo.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                mScore = mScore + 2;
                 updateQuestion();
             }
         });
-
-        //End of Button Listener for Button2
-
-
-        //Start of Button Listener for Button3
-        mButtonChoice3.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                mScore = mScore + 3;
-                updateQuestion();
-            }
-        });
-
-        //End of Button Listener for Button3
-
-
-
-
-
     }
 
     private void updateQuestion(){
-
-        System.out.println(mScore);
-
-        mQuestionView.setText(mQuestionLibrary.getQuestion(mQuestionNumber));
-        mButtonChoice1.setText(mQuestionLibrary.getChoice1(mQuestionNumber));
-        mButtonChoice2.setText(mQuestionLibrary.getChoice2(mQuestionNumber));
-        mButtonChoice3.setText(mQuestionLibrary.getChoice3(mQuestionNumber));
         mQuestionNumber++;
 
-        //mAnswer = mQuestionLibrary.getCorrectAnswer(mQuestionNumber);
+        //System.out.println(mScore);
 
         if(mQuestionNumber == mQuestionLibrary.getQuestions().length)
         {
@@ -107,6 +76,11 @@ public class QuizAudit extends AppCompatActivity {
             showScore.putExtra("score", mScore);
             startActivity(showScore);
         }
+        else
+        {
+            mQuestionView.setText(mQuestionLibrary.getQuestion(mQuestionNumber));
+        }
+
     }
 
 
