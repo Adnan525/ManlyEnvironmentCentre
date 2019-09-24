@@ -8,6 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 public class QuizAudit extends AppCompatActivity {
 
     private PamphletQuestions mQuestionLibrary = new PamphletQuestions();
@@ -71,6 +76,27 @@ public class QuizAudit extends AppCompatActivity {
 
         if(mQuestionNumber == mQuestionLibrary.getQuestions().length)
         {
+            try
+            {
+                FileOutputStream ratingHistory = null;
+                ratingHistory = openFileOutput("ratingHistory.txt", MODE_PRIVATE);
+                ratingHistory.write(mScore);
+                System.out.println("--------------------------------------------");
+                System.out.println("File successfully created");
+                System.out.println(getFilesDir());
+
+
+//                PrintWriter ratingHistory = new PrintWriter("ratingHistory.txt", "UTF-8");
+//                ratingHistory.println(mScore);
+//                ratingHistory.close();
+
+            }
+            catch (Exception e)
+            {
+                System.out.println("--------------------------------------------");
+                System.out.println("File not found");
+                System.out.println(getFilesDir());
+            }
             //System.out.println(mScore);
             Intent showScore = new Intent(this, ShowScore.class);
             showScore.putExtra("score", mScore);
