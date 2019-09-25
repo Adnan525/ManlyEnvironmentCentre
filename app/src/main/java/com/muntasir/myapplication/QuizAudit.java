@@ -29,7 +29,7 @@ public class QuizAudit extends AppCompatActivity {
     private TextView mQuestionView;
     private Button mYes;
     private Button mNo;
-    private int mScore = 0;
+    private Integer mScore = 0;
     private int mQuestionNumber = -1;  //set to -1 since onCreate() increases the number by 1 while starting
 
     @Override
@@ -82,13 +82,38 @@ public class QuizAudit extends AppCompatActivity {
         {
             File path = getApplicationContext().getFilesDir();
             File ratingHistory = new File(path, "ratingHistory.txt");
+            String prevUsage = "";
+
+
+            try
+            {
+                System.out.println("Checking old file");
+                System.out.println("--------------------------------------------");
+                int length = (int)ratingHistory.length();
+                byte[] usageInBytes = new byte[length];
+                //File readRatingHistory = new File ("ratingHistory.txt");
+                FileInputStream read = new FileInputStream(ratingHistory);
+                //BufferedReader bReader = new BufferedReader(new InputStreamReader(read));
+                //StringBuilder sb = new StringBuilder();
+                read.read(usageInBytes);
+                prevUsage += new String(usageInBytes);
+                System.out.println("Old file contains : " + prevUsage);
+                read.close();
+            }
+            catch (Exception e)
+            {
+                System.out.println("--------------------------------------------");
+                System.out.println("Opeinig file not working");
+                System.out.println("--------------------------------------------");
+            }
 
             try
             {
                 FileOutputStream write = new FileOutputStream(ratingHistory);
                 //PrintWriter ratingHistory = new PrintWriter("ratingHistory.txt");
-                //ratingHistory.write(mScore);
-                write.write("Score to save = someInt val".getBytes());
+                String update = prevUsage + " " + mScore.toString();
+                write.write(update.getBytes());
+                //write.write("Score to save = someInt val".getBytes());
                 System.out.println("--------------------------------------------");
                 System.out.println("File successfully created and stored at " + getFilesDir());
                 System.out.println("--------------------------------------------");
@@ -104,28 +129,6 @@ public class QuizAudit extends AppCompatActivity {
             {
                 System.out.println("--------------------------------------------");
                 System.out.println("File not found");
-                System.out.println("--------------------------------------------");
-            }
-
-            try
-            {
-                System.out.println("Printing usage history");
-                System.out.println("--------------------------------------------");
-                int length = (int)ratingHistory.length();
-                byte[] usageInBytes = new byte[length];
-                //File readRatingHistory = new File ("ratingHistory.txt");
-                FileInputStream read = new FileInputStream(ratingHistory);
-                //BufferedReader bReader = new BufferedReader(new InputStreamReader(read));
-                //StringBuilder sb = new StringBuilder();
-                read.read(usageInBytes);
-                String text = new String(usageInBytes);
-                System.out.println(text);
-                read.close();
-            }
-            catch (Exception e)
-            {
-                System.out.println("--------------------------------------------");
-                System.out.println("Opeinig file not working");
                 System.out.println("--------------------------------------------");
             }
             //System.out.println(mScore);

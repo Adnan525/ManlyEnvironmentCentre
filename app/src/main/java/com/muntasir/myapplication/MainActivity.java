@@ -11,6 +11,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button quizButton;
     private Button contactButton;
+    private Button usageButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +27,20 @@ public class MainActivity extends AppCompatActivity {
                                       }
 
         );
-        
+
         contactButton = (Button) findViewById(R.id.contactButton);
         contactButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openContactUs();
+            }
+        });
+
+        usageButton = (Button) findViewById(R.id.usageButton);
+        usageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUsage();
             }
         });
     }
@@ -41,7 +51,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openPamphletQuestion() {
-        Intent pamphletQuestionIntent = new Intent(this, QuizAudit.class );
+        Intent pamphletQuestionIntent = new Intent(this, QuizAudit.class);
         startActivity(pamphletQuestionIntent);
+    }
+
+    public void openUsage()
+    {
+        Intent usageIntent = new Intent(this, UsageHistory.class);
+        startActivity(usageIntent);
     }
 }
