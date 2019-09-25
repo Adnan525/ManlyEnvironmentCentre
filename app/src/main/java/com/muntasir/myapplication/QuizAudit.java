@@ -8,9 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 public class QuizAudit extends AppCompatActivity {
@@ -76,15 +80,20 @@ public class QuizAudit extends AppCompatActivity {
 
         if(mQuestionNumber == mQuestionLibrary.getQuestions().length)
         {
+            File path = getApplicationContext().getFilesDir();
+            File ratingHistory = new File(path, "ratingHistory.txt");
+
             try
             {
-                FileOutputStream ratingHistory = null;
-                ratingHistory = openFileOutput("ratingHistory.txt", MODE_PRIVATE);
-                ratingHistory.write(mScore);
+                FileOutputStream write = new FileOutputStream(ratingHistory);
+                //PrintWriter ratingHistory = new PrintWriter("ratingHistory.txt");
+                //ratingHistory.write(mScore);
+                write.write("Score to save = someInt val".getBytes());
                 System.out.println("--------------------------------------------");
-                System.out.println("File successfully created");
-                System.out.println(getFilesDir());
-
+                System.out.println("File successfully created and stored at " + getFilesDir());
+                System.out.println("--------------------------------------------");
+                write.close();
+                System.out.println();
 
 //                PrintWriter ratingHistory = new PrintWriter("ratingHistory.txt", "UTF-8");
 //                ratingHistory.println(mScore);
@@ -95,7 +104,29 @@ public class QuizAudit extends AppCompatActivity {
             {
                 System.out.println("--------------------------------------------");
                 System.out.println("File not found");
-                System.out.println(getFilesDir());
+                System.out.println("--------------------------------------------");
+            }
+
+            try
+            {
+                System.out.println("Printing usage history");
+                System.out.println("--------------------------------------------");
+                int length = (int)ratingHistory.length();
+                byte[] usageInBytes = new byte[length];
+                //File readRatingHistory = new File ("ratingHistory.txt");
+                FileInputStream read = new FileInputStream(ratingHistory);
+                //BufferedReader bReader = new BufferedReader(new InputStreamReader(read));
+                //StringBuilder sb = new StringBuilder();
+                read.read(usageInBytes);
+                String text = new String(usageInBytes);
+                System.out.println(text);
+                read.close();
+            }
+            catch (Exception e)
+            {
+                System.out.println("--------------------------------------------");
+                System.out.println("Opeinig file not working");
+                System.out.println("--------------------------------------------");
             }
             //System.out.println(mScore);
             Intent showScore = new Intent(this, ShowScore.class);

@@ -15,6 +15,7 @@ public class ShowScore extends AppCompatActivity {
 
     private Button quitButton;
     private TextView mScoreView;
+    private TextView mRatingScreen;
 
 
     @Override
@@ -32,6 +33,8 @@ public class ShowScore extends AppCompatActivity {
             mScoreView = (TextView) findViewById(R.id.score);
             mScoreView.setText(score + "");
             //mScoreView.setText(check.getStringExtra("score").toString());
+            mRatingScreen = (TextView) findViewById(R.id.ratingScreen);
+            mRatingScreen.setText(provideRating(score));
         }
 
         quitButton = (Button) findViewById(R.id.quitButton);
@@ -49,6 +52,15 @@ public class ShowScore extends AppCompatActivity {
         startActivity(mainMenu);
     }
 
+    public String provideRating(int i)
+    {
+        if(i >= 40)
+            return "You have a 5 star energy rating!";
+        else if (i>=25)
+            return "Yoy are doing OK - a 3 star rating!";
+        else
+            return "You could be an energy drain, try again.";
+    }
 
 
 }
