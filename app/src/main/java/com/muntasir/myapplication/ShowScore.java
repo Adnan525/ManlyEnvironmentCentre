@@ -1,12 +1,17 @@
 package com.muntasir.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.io.PrintWriter;
@@ -16,6 +21,9 @@ public class ShowScore extends AppCompatActivity {
     private Button quitButton;
     private TextView mScoreView;
     private TextView mRatingScreen;
+    private RatingBar mRating;
+
+    public int numStar = 0;
 
 
     @Override
@@ -37,6 +45,19 @@ public class ShowScore extends AppCompatActivity {
             mRatingScreen.setText(provideRating(score));
         }
 
+        //rating colour
+        mRating = (RatingBar) findViewById(R.id.ratingBar);
+        LayerDrawable stars = (LayerDrawable) mRating.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(Color.parseColor("#FFA500"), PorterDuff.Mode.SRC_ATOP); //red
+        stars.getDrawable(0).setColorFilter(Color.parseColor("#FFA500"), PorterDuff.Mode.SRC_ATOP); //orange
+        stars.getDrawable(0).setColorFilter(Color.parseColor("#FFA500"), PorterDuff.Mode.SRC_ATOP); //yellow
+
+        if(numStar == 0)
+        {
+            mRating.setVisibility(View.GONE);
+        }
+        mRating.setNumStars(numStar);
+
         quitButton = (Button) findViewById(R.id.quitButton);
         quitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,14 +73,24 @@ public class ShowScore extends AppCompatActivity {
         startActivity(mainMenu);
     }
 
+
     public String provideRating(int i)
     {
         if(i >= 40)
+        {
+            numStar = 5;
             return "You have a 5 star energy rating!";
+        }
         else if (i>=25)
-            return "Yoy are doing OK - a 3 star rating!";
+        {
+            numStar = 3;
+            return "You are doing OK - a 3 star rating!";
+        }
         else
+        {
+            numStar = 0;
             return "You could be an energy drain, try again.";
+        }
     }
 
 

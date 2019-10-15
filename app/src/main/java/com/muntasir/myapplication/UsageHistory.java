@@ -51,11 +51,16 @@ public class UsageHistory extends AppCompatActivity {
 
     public String getUsage()
     {
+        int startPosition = 0;
         String str = "";
         String[] usageArr = rating.split(" ");
-        for(String s : usageArr)
+        if(usageArr.length > 10)
         {
-           str += "Audit performed on " + date + ", Score : " + s + "\n";
+            startPosition = usageArr.length - 11;
+        }
+        for(int i = startPosition; i <= usageArr.length -1; i++)
+        {
+           str += "Audit performed on " + date + ", Score : " + usageArr[i] + "\n";
         }
         return str;
     }
