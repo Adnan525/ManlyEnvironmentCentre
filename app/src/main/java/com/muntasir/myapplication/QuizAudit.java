@@ -16,6 +16,9 @@ import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class QuizAudit extends AppCompatActivity {
 
@@ -107,11 +110,13 @@ public class QuizAudit extends AppCompatActivity {
                 System.out.println("--------------------------------------------");
             }
 
+            //writing to file
+
             try
             {
                 FileOutputStream write = new FileOutputStream(ratingHistory);
                 //PrintWriter ratingHistory = new PrintWriter("ratingHistory.txt");
-                String update = prevUsage + " " + mScore.toString();
+                String update = prevUsage + " " + getDate().toString() + " " + mScore.toString();
                 write.write(update.getBytes());
                 //write.write("Score to save = someInt val".getBytes());
                 System.out.println("--------------------------------------------");
@@ -141,6 +146,14 @@ public class QuizAudit extends AppCompatActivity {
             mQuestionView.setText(mQuestionLibrary.getQuestion(mQuestionNumber));
         }
 
+    }
+
+    //store current date
+    public String getDate()
+    {
+        Date currentDate = Calendar.getInstance().getTime();
+        SimpleDateFormat dFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        return dFormat.format(currentDate);
     }
 
 
