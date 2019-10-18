@@ -23,7 +23,7 @@ public class ApplianceAnswers extends AppCompatActivity {
     public TextView applianceName2;
     public TextView auditDate2;
     String rating = "";
-    String date = this.getDate();
+    String dating = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,19 +33,26 @@ public class ApplianceAnswers extends AppCompatActivity {
             File path = getApplicationContext().getFilesDir();
             File ratingHistory = new File(path, "applianceRating.txt");
 
+            File path2 = getApplicationContext().getFilesDir();
+            File dateThing = new File(path2, "date.txt");
+
             System.out.println("Printing usage history");
             System.out.println("--------------------------------------------");
             int length = (int)ratingHistory.length();
             byte[] usageInBytes = new byte[length];
-            //File readRatingHistory = new File ("ratingHistory.txt");
             FileInputStream read = new FileInputStream(ratingHistory);
-            //BufferedReader bReader = new BufferedReader(new InputStreamReader(read));
-            //StringBuilder sb = new StringBuilder();
             read.read(usageInBytes);
             rating += new String(usageInBytes);
             System.out.println(rating);
-
             read.close();
+
+            int length2 = (int)dateThing.length();
+            byte[] usageInBytes2 = new byte[length2];
+            FileInputStream read2 = new FileInputStream(dateThing);
+            read2.read(usageInBytes2);
+            dating += new String(usageInBytes2);
+            System.out.println(dating);
+            read2.close();
         }
         catch (Exception e)
         {
@@ -61,6 +68,9 @@ public class ApplianceAnswers extends AppCompatActivity {
         applianceName2 = (TextView) findViewById(R.id.name2);
         auditDate2 = (TextView) findViewById(R.id.date2);
         String[] usageArray = rating.split(" ");
+        String[] dateList = dating.split(" ");
+        int prev = usageArray.length - 18;
+        int last = usageArray.length - 9;
         if(usageArray.length == 1){
             applianceName.setVisibility(View.GONE);
             auditDate.setText("You have not answered any appliance usage questions yet");
@@ -71,20 +81,33 @@ public class ApplianceAnswers extends AppCompatActivity {
         }
         else if(usageArray.length == 10){
             applianceName.setText(this.getName());
-            auditDate.setText(this.getDate());
-            usageData.setText((this.getUsage()));
+            auditDate.setText(this.getDate(0));
+            usageData.setText((this.getUsage(1)));
+            applianceName2.setVisibility(View.GONE);
+            auditDate2.setVisibility(View.GONE);
+            usageData2.setVisibility(View.GONE);
+        }
+        else{
+            auditDate.setText(this.getDate(prev));
+            auditDate2.setText((this.getDate(last)));
+            applianceName.setText(this.getName());
+            applianceName2.setText(this.getName());
+            usageData.setText(this.getUsage(prev));
+            usageData2.setText(this.getUsage(last));
+            System.out.println(usageArray.length);
+            System.out.println(dateList.length);
         }
 
     }
 
-    public String getUsage()
+    public String getUsage(int a)
     {
 
         String usageStr = "";
         String[] usageArr = rating.split(" ");
 
 
-        for(int i = 1; i < 10; i++){
+        for(int i = a; i < a + 9; i++){
             usageStr += usageArr[i] + " minutes" + "\n";
         }
 
@@ -100,18 +123,19 @@ public class ApplianceAnswers extends AppCompatActivity {
 
 
 
-    public String getDate()
-    {
-        String[] usageArr = rating.split(" ");
-        if (usageArr.length == 1) {
-            String dateStr = "You have not answered any appliance usage questions yet";
-            return dateStr;
+    public String getDate(int a){
+
+        String[] dateList = dating.split(" ");
+        String ret;
+        if(a == 0){
+             ret = dateList[2] + " " + "Day: " + ((a / 9) + 1);
         }
-        else {
-            Date currentDate = Calendar.getInstance().getTime();
-            SimpleDateFormat dFormat = new SimpleDateFormat("dd-MMM-yyyy");
-            return dFormat.format(currentDate);
+        else{
+            ret = dateList[a] + " " + "Day: " + ((a / 9) + 1);
         }
+        return ret;
+
+
     }
 
 }

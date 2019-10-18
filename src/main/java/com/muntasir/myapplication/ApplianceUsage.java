@@ -14,16 +14,19 @@ import java.io.File;
 import java.io.FileInputStream;
 
 import java.io.FileOutputStream;
-
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class ApplianceUsage extends AppCompatActivity {
 
-    private Integer mScore = 0;
+    private String date = this.getDate();
 
     private QuestionLibrary mQuestionLibrary = new QuestionLibrary();
 
     private TextView mScoreView;
+    private TextView dateShower;
     private TextView mQuestionView;
     private Button mNext;
     private EditText mInput;
@@ -39,6 +42,7 @@ public class ApplianceUsage extends AppCompatActivity {
         mQuestionView = (TextView)findViewById(R.id.question);
         mNext = (Button)findViewById(R.id.next);
         mInput = (EditText)findViewById((R.id.input));
+        dateShower = (TextView) findViewById(R.id.score);
 
 
         updateQuestion();
@@ -53,20 +57,36 @@ public class ApplianceUsage extends AppCompatActivity {
                     File applianceHistory = new File(path, "applianceRating.txt");
                     String prevUsage = "";
 
+                    File path2 = getApplicationContext().getFilesDir();
+                    File applianceHistory2 = new File(path2, "date.txt");
+                    String prevUsage2 = "";
+
+
+
                     try
                     {
                         System.out.println("Checking old file");
                         System.out.println("--------------------------------------------");
                         int length = (int)applianceHistory.length();
                         byte[] usageInBytes = new byte[length];
-                        //File readRatingHistory = new File ("ratingHistory.txt");
                         FileInputStream read = new FileInputStream(applianceHistory);
-                        //BufferedReader bReader = new BufferedReader(new InputStreamReader(read));
-                        //StringBuilder sb = new StringBuilder();
                         read.read(usageInBytes);
                         prevUsage += new String(usageInBytes);
                         System.out.println("Old file contains : " + prevUsage);
                         read.close();
+
+                        System.out.println("Checking old file2");
+                        System.out.println("--------------------------------------------");
+                        int length2 = (int)applianceHistory2.length();
+                        byte[] usageInBytes1 = new byte[length2];
+                        FileInputStream read2 = new FileInputStream(applianceHistory2);
+                        read2.read(usageInBytes1);
+                        prevUsage2 += new String(usageInBytes1);
+                        System.out.println("Old file contains 2: " + prevUsage2);
+                        read2.close();
+
+
+
                     }
                     catch (Exception e)
                     {
@@ -78,7 +98,6 @@ public class ApplianceUsage extends AppCompatActivity {
                     try
                     {
                         FileOutputStream write = new FileOutputStream(applianceHistory);
-                        //PrintWriter ratingHistory = new PrintWriter("ratingHistory.txt");
                         String update = prevUsage + " " + mInput.getText().toString();
                         write.write(update.getBytes());
                         System.out.println("--------------------------------------------");
@@ -86,6 +105,15 @@ public class ApplianceUsage extends AppCompatActivity {
                         System.out.println("--------------------------------------------");
                         write.close();
                         System.out.println();
+
+                        FileOutputStream write2 = new FileOutputStream(applianceHistory2);
+                        String update2 = prevUsage2 + " " + date;
+                        write2.write(update2.getBytes());
+                        System.out.println("--------------------------------------------");
+                        System.out.println("File successfully created and stored at " + getFilesDir());
+                        System.out.println("--------------------------------------------");
+                        write2.close();
+                        System.out.println(date);
 
                     }
                     catch (Exception e)
@@ -142,6 +170,7 @@ public class ApplianceUsage extends AppCompatActivity {
         mQuestionView.setText(mQuestionLibrary.getQuestion(mQuestionNumber));
         mQuestionNumber++;
         mInput.setText("");
+        dateShower.setText(this.getDate());
         if(mQuestionNumber == mQuestionLibrary.mQuestions.length - 1)
             mNext.setText("SUBMIT");
         else if (mQuestionNumber == mQuestionLibrary.mQuestions.length)
@@ -157,4 +186,12 @@ public class ApplianceUsage extends AppCompatActivity {
         Intent main = new Intent(this, MainActivity.class );
         startActivity(main);
     }
+
+    public String getDate(){
+        Date currentDate = Calendar.getInstance().getTime();
+        SimpleDateFormat dFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        return dFormat.format(currentDate);
+
+    }
+
 }
