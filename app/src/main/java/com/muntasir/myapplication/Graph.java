@@ -26,7 +26,7 @@ public class Graph extends AppCompatActivity {
     {
         int startPosition = 1;
 
-        if(arr.length > 19) //more than 10
+        if(arr.length > 21) //startig from 1, add 20 val so 21 and not using arr.length -1
         {
             startPosition = arr.length - 19;
         }

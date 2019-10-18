@@ -69,12 +69,17 @@ public class UsageHistory extends AppCompatActivity {
     {
         int startPosition = 1;
         String str = "";
+        System.out.println("--------------------------------------------");
+        System.out.println("--------------------------------------------");
+        System.out.println("Text file contains : "+ rating);
+        System.out.println("--------------------------------------------");
+        System.out.println("--------------------------------------------");
         usageArr = rating.split(" ");
-        if(usageArr.length > 19) //more than 10
+        if(usageArr.length > 21) //more than 10 //strated with empty string
         {
             startPosition = usageArr.length - 19;
         }
-        for(int i = startPosition; i <= usageArr.length -2; i+=2)
+        for(int i = startPosition; i <= usageArr.length - 2; i+=2)
         {
            str += "Audit performed on " + usageArr[i] + ", Score : " + usageArr[i + 1] + "\n";   //have to check what's wromg
         }
