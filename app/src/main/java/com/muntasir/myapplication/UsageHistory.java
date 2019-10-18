@@ -2,7 +2,10 @@ package com.muntasir.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.File;
@@ -15,8 +18,13 @@ public class UsageHistory extends AppCompatActivity {
 
     public TextView mRatingHistory;
     public TextView mApplianceHistory;
+    public Button graphButton;
     String rating = "";
     String date = this.getDate();
+
+    //data
+    String[] usageArr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,20 +55,28 @@ public class UsageHistory extends AppCompatActivity {
         }
         mRatingHistory = (TextView) findViewById(R.id.ratingHistory);
         mRatingHistory.setText(this.getUsage());
+
+        graphButton = (Button) findViewById(R.id.graphButton);
+        graphButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getGraph();
+            }
+        });
     }
 
     public String getUsage()
     {
-        int startPosition = 0;
+        int startPosition = 1;
         String str = "";
-        String[] usageArr = rating.split(" ");
-        if(usageArr.length > 10)
+        usageArr = rating.split(" ");
+        if(usageArr.length > 19) //more than 10
         {
-            startPosition = usageArr.length - 11;
+            startPosition = usageArr.length - 19;
         }
-        for(int i = startPosition; i <= usageArr.length -1; i++)
+        for(int i = startPosition; i <= usageArr.length -2; i+=2)
         {
-           str += "Audit performed on " + date + ", Score : " + usageArr[i] + "\n";
+           str += "Audit performed on " + usageArr[i] + ", Score : " + usageArr[i + 1] + "\n";   //have to check what's wromg
         }
         return str;
     }
@@ -72,4 +88,10 @@ public class UsageHistory extends AppCompatActivity {
         return dFormat.format(currentDate);
     }
 
+    public void getGraph()
+    {
+        Intent graph = new Intent(this, com.muntasir.myapplication.graph.class);
+        graph.putExtra("usage", usageArr);
+        startActivity(graph);
+    }
 }
