@@ -90,7 +90,7 @@ public class UsageHistory extends AppCompatActivity {
 
     public void getGraph()
     {
-        Intent graph = new Intent(this, com.muntasir.myapplication.graph.class);
+        Intent graph = new Intent(this, Graph.class);
         graph.putExtra("usage", usageArr);
         startActivity(graph);
     }

@@ -1,7 +1,9 @@
 package com.muntasir.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -49,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                System.exit(0);
+                killActivity();
             }
         });
     }
@@ -69,5 +70,32 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent usageIntent = new Intent(this, UsageHistory.class);
         startActivity(usageIntent);
+    }
+
+
+    //kill activity code taken from https://www.instructables.com/id/HelloWorld-With-Exit-Button-AndroidStudio/
+    private void killActivity() {
+//        finish();
+//        System.exit(0);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Exit");
+        builder.setMessage("Do you want to exit?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                finish();
+            }
+    });
+	    builder.setNegativeButton("No, go back to main menu", new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialogInterface, int i)
+        {
+            dialogInterface.dismiss();
+        }
+});
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

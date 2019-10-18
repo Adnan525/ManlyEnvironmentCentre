@@ -4,11 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".graph">
+    tools:context=".Graph">
 
-<com.jjoe64.graphview.GraphView
-    android:layout_width = 'match_parent'
-    android:layout_height = "400dp"
-    android:id = "@+id/graph"/>
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
+        android:layout_width='match_parent'
+        android:layout_height="400dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="280dp"
+        android:layout_height="42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:text="The graph represents your audit report for the last 10 audits" />
 
 </RelativeLayout>

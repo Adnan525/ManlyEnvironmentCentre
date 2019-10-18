@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.DefaultLabelFormatter;
@@ -15,9 +17,10 @@ import com.muntasir.myapplication.UsageHistory.*;
 
 import java.util.ArrayList;
 
-public class graph extends AppCompatActivity {
+public class Graph extends AppCompatActivity {
 
     DataPoint[] plotArr;
+    public Button backToMainMenu;
 
     public DataPoint[] getPlots(String[] arr)
     {
@@ -74,9 +77,22 @@ public class graph extends AppCompatActivity {
             @Override
             public String formatLabel(double value, boolean isValueX) {
                 if(isValueX)
-                    return "A " + super.formatLabel(value, isValueX);
+                    return "A" + super.formatLabel(value, isValueX);
                 return super.formatLabel(value, isValueX);
             }
         });
+//        backToMainMenu = (Button) findViewById(R.id.backToMainMenu);
+//        backToMainMenu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                openMainMenu();
+//            }
+//        });
+    }
+
+    public void openMainMenu()
+    {
+        Intent mainMenu = new Intent(this, MainActivity.class);
+        startActivity(mainMenu);
     }
 }
