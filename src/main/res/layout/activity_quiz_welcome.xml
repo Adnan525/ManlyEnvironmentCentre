@@ -13,7 +13,7 @@
 
 
     <TextView
-        android:id="@+id/question"
+        android:id="@+id/question1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="1dp"
@@ -22,7 +22,7 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/question"
+        android:id="@+id/question2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="61dp"
         android:layout_marginBottom="24dp"
-        android:background="#0091EA"
+        android:background="#FF8C00"
         android:padding="8dp"
         android:text="Yes, I am"
         android:textColor="#fff" />
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="61dp"
         android:layout_marginBottom="24dp"
-        android:background="#0091EA"
+        android:background="#FF8C00"
         android:padding="8dp"
         android:text="No, I am not"
         android:textColor="#fff" />

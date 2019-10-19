@@ -128,10 +128,10 @@ public class ApplianceAnswers extends AppCompatActivity {
         String[] dateList = dating.split(" ");
         String ret;
         if(a == 0){
-             ret = dateList[2] + " " + "Day: " + ((a / 9) + 1);
+             ret = dateList[2] + " " + "Attempt: " + ((a / 9) + 1);
         }
         else{
-            ret = dateList[a] + " " + "Day: " + ((a / 9) + 1);
+            ret = dateList[a] + " " + "Attempt: " + ((a / 9) + 1);
         }
         return ret;
 

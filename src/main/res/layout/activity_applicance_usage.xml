@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="61dp"
         android:layout_marginBottom="24dp"
-        android:background="#0091EA"
+        android:background="#FF8C00"
         android:padding="8dp"
         android:text="NEXT"
         android:textColor="#fff" />
