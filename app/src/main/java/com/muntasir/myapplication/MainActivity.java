@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openContactUs() {
-        Intent contactUsIntent = new Intent(this, ContactUs.class);
+        Intent contactUsIntent = new Intent(this, ContactUsMain.class);
         startActivity(contactUsIntent);
     }
 

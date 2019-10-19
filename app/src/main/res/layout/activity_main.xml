@@ -4,56 +4,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#fff"><![CDATA[
+
+    />
+
+    />
+
+    />
+
+
+
+
+
+    ]]>
+
 
     <Button
         android:id="@+id/quizButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_marginTop="176dp"
+        android:background="#FF8C00"
+        android:padding="8dp"
         android:text="Quiz"
+        android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/userHistoryButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_marginTop="12dp"
+        android:background="#FF8C00"
+        android:padding="8dp"
         android:text="User history"
+        android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <Button
         android:id="@+id/contactButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_marginTop="12dp"
+        android:background="#FF8C00"
+        android:padding="8dp"
         android:text="Contact us"
+        android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userHistoryButton" />
+        app:layout_constraintTop_toBottomOf="@+id/userHistoryButton" /><![CDATA[
+
+    />
+
+    />
+
+
+
+    ]]>
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+
+        android:layout_height="61dp"
+        android:layout_marginTop="12dp"
+        android:background="#FF8C00"
+        android:padding="8dp"
         android:text="Appliance Usage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quizButton" />
+        android:textColor="#fff"
+        app:layout_constraintTop_toBottomOf="@+id/quizButton"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/exitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_marginTop="12dp"
+        android:background="#FF8C00"
+        android:padding="8dp"
         android:text="Exit"
+        android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contactButton" />
 

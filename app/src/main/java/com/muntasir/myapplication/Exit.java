@@ -68,4 +68,3 @@ public class Exit extends AppCompatActivity {
         dialog.show();
     }
 }
-// penguin photo collected from https://pngriver.com/download-penguin-png-transparent-clipart-images-64-images-9156/download-penguins-png-transparent-images-transparent-backgrounds-pngriver-com-penguin-clip-art-black-and-white-free-clipart-images-clipartandscrap/
