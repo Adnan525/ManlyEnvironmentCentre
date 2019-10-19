@@ -22,24 +22,24 @@
 
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="Yes"
-        android:background="#0091EA"
-        android:textColor="#fff"
+        android:id="@+id/yesButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="#FF8C00"
         android:padding="8dp"
-        android:layout_marginBottom="24dp"
-        android:id="@+id/yesButton"/>
+        android:textColor="#fff" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="No"
-        android:background="#0091EA"
-        android:textColor="#fff"
+        android:id="@+id/noButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="#FF8C00"
         android:padding="8dp"
-        android:layout_marginBottom="24dp"
-        android:id="@+id/noButton"/>
+        android:textColor="#fff" />
 
 
 </LinearLayout>

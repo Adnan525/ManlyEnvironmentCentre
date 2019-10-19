@@ -20,11 +20,15 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" />
 
-        <activity android:name=".Exit" />
+        <activity android:name=".Exit"
+            android:label="Exit"/>
         <activity android:name=".Graph" />
-        <activity android:name=".QuizAnswers" />
-        <activity android:name=".ShowScore" />
-        <activity android:name=".QuizAudit" />
+        <activity android:name=".QuizAnswers"
+            android:label="Appliance input records"/>
+        <activity android:name=".ShowScore"
+            android:label="The score"/>
+        <activity android:name=".QuizAudit"
+            android:label="Quiz"/>
         <activity android:name=".ApplianceAnswers" />
         <activity
             android:name=".UserHistory"
