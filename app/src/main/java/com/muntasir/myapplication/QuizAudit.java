@@ -139,6 +139,7 @@ public class QuizAudit extends AppCompatActivity {
             //System.out.println(mScore);
             Intent showScore = new Intent(this, ShowScore.class);
             showScore.putExtra("score", mScore);
+            finish();
             startActivity(showScore);
         }
         else

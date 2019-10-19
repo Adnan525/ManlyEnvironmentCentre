@@ -21,6 +21,7 @@ public class QuizWelcome extends AppCompatActivity {
         yesButton.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
+                                              finish();
                                               openQuizAudit();
                                           }
                                       }
@@ -31,7 +32,8 @@ public class QuizWelcome extends AppCompatActivity {
         noButton.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
-                                              openMain();
+                                              //openMain();
+                                              finish();
                                           }
                                       }
 

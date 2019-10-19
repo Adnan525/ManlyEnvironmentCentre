@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -167,7 +168,8 @@ public class ApplianceUsage extends AppCompatActivity {
                         mNext.setOnClickListener(new View.OnClickListener() {
                                                      @Override
                                                      public void onClick(View v) {
-                                                         openMain();
+                                                         //openMain();
+                                                         finish();
                                                      }
                                                  }
 
@@ -178,21 +180,27 @@ public class ApplianceUsage extends AppCompatActivity {
 
                     }
                 }
+                else if(mQuestionNumber == mQuestionLibrary.mQuestions.length - 1 && mInput.getText().toString().isEmpty()) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "You have not inserted your input", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
                 else if(mQuestionNumber == mQuestionLibrary.mQuestions.length - 1) {
                     updateQuestion();
                     mInput.setVisibility(View.GONE);
                     mNext.setOnClickListener(new View.OnClickListener() {
                                                  @Override
                                                  public void onClick(View v) {
-                                                     openMain();
+                                                     finish();
+                                                     //openMain();
                                                  }
                                              }
 
                     );
                 }
                 else {
-                    updateQuestion();
-
+                    Toast toast = Toast.makeText(getApplicationContext(), "You have not inserted your input", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
 
             }

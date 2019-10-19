@@ -63,6 +63,11 @@ public class QuizAnswers extends AppCompatActivity {
                 getGraph();
             }
         });
+        if(getUsage() == "")
+        {
+            graphButton.setVisibility(View.GONE);
+            mRatingHistory.setText("You have not attempted the quiz yet");
+        }
     }
 
     public String getUsage()

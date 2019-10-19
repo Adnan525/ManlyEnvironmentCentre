@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                killActivity();
+                finish();
+                openExit();
             }
         });
 
@@ -84,34 +85,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(applianceUsageIntent);
     }
 
+    private void openExit() {
+        Intent applianceUsageIntent = new Intent(this, Exit.class );
+        startActivity(applianceUsageIntent);
+    }
+
     private void openUserHistory() {
         Intent userHistoryIntent = new Intent(this, UserHistory.class );
         startActivity(userHistoryIntent);
     }
 
     //kill activity code taken from https://www.instructables.com/id/HelloWorld-With-Exit-Button-AndroidStudio/
-    private void killActivity() {
-//        finish();
-//        System.exit(0);
-        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Exit");
-        builder.setMessage("Do you want to exit?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
-                finish();
-            }
-        });
-        builder.setNegativeButton("No, go back to main menu", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
-                dialogInterface.dismiss();
-            }
-        });
 
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
+
+
 }

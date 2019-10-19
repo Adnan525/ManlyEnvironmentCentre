@@ -61,7 +61,7 @@ public class ShowScore extends AppCompatActivity {
         quitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openMainMenu();
+                finish();//openMainMenu();
             }
         });
     }
