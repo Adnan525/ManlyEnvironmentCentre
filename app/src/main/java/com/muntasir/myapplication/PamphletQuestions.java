@@ -16,7 +16,7 @@ public class PamphletQuestions {
             "In winter do you put on a warm sweater instead of the heater?",
             "In winter do you keep doors closed and use draught stoppers?",
             "In winter do you wrap up your windows with curtains?",
-            "In winter do you let let in the sunlight to heat the rooms?",
+            "In winter do you let in the sunlight to heat the rooms?",
             "In winter do you curl up in bed with a hot water bottle and book?",
             "In summer do you wear light, loose clothing on hot days?",
             "In summer do you open doors and windows to create cooling cross draughts?",
@@ -47,7 +47,7 @@ public class PamphletQuestions {
             "While going somewhere do you ride your bike, take a bus or walk?",
             "While going somewhere do you offer to share a lift with others?",
             "Do you suggest family adventures on a bus, train or ferry?",
-            "Do you walk to the nearby shops and carry the bags instead of taking a car?"
+            "Do you use reusable bag while shopping?"
     };
 
 
