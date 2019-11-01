@@ -5,19 +5,32 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="WATTS WHAT"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Graph"></activity>
-        <activity android:name=".UsageHistory" />
+        <activity android:name=".Exit"></activity>
+        <activity android:name=".Graph" />
+        <activity android:name=".QuizAnswers" />
         <activity android:name=".ShowScore" />
         <activity android:name=".QuizAudit" />
+        <activity android:name=".ApplianceAnswers" />
+        <activity
+            android:name=".UserHistory"
+            android:label="User history" />
+        <activity
+            android:name=".QuizWelcome"
+            android:label="Quiz" />
+        <activity
+            android:name=".ApplianceUsage"
+            android:label="Appliance usage" />
         <activity
             android:name=".TestQuestion"
             android:label="@string/title_activity_test_question"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ContactUs" />
+        <activity
+            android:name=".ContactUs"
+            android:label="Contact Us" />
         <activity android:name=".PamphletQuestion" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -26,6 +39,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

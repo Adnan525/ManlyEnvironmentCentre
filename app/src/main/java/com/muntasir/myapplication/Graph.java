@@ -13,7 +13,7 @@ import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-import com.muntasir.myapplication.UsageHistory.*;
+import com.muntasir.myapplication.QuizAnswers.*;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ public class Graph extends AppCompatActivity {
 
         if(arr.length > 21) //startig from 1, add 20 val so 21 and not using arr.length -1
         {
-            startPosition = arr.length - 19;
+            startPosition = arr.length - 20;
         }
         int tracker = 1;
         ArrayList<DataPoint> temp = new ArrayList<>();

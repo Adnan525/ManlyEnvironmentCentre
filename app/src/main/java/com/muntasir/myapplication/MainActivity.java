@@ -13,9 +13,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Button quizButton;
     private Button contactButton;
-    private Button usageButton;
+    private Button button2;
+    private Button userHistory;
     private Button exitButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +25,12 @@ public class MainActivity extends AppCompatActivity {
         quizButton.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
-                                              openPamphletQuestion();
+                                              openQuizWelcome();
                                           }
                                       }
 
         );
-
+        
         contactButton = (Button) findViewById(R.id.contactButton);
         contactButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,11 +39,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        usageButton = (Button) findViewById(R.id.usageButton);
-        usageButton.setOnClickListener(new View.OnClickListener() {
+        button2 = (Button) findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openUsage();
+                System.out.println("123");
+
+                openApplianceUsage();
+            }
+        });
+
+        userHistory = (Button) findViewById(R.id.userHistoryButton);
+        userHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUserHistory();
             }
         });
 
@@ -51,9 +61,13 @@ public class MainActivity extends AppCompatActivity {
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                killActivity();
+                finish();
+                openExit();
             }
         });
+
+
+
     }
 
     private void openContactUs() {
@@ -61,41 +75,28 @@ public class MainActivity extends AppCompatActivity {
         startActivity(contactUsIntent);
     }
 
-    private void openPamphletQuestion() {
-        Intent pamphletQuestionIntent = new Intent(this, QuizAudit.class);
+    private void openQuizWelcome() {
+        Intent pamphletQuestionIntent = new Intent(this, QuizWelcome.class );
         startActivity(pamphletQuestionIntent);
     }
 
-    public void openUsage()
-    {
-        Intent usageIntent = new Intent(this, UsageHistory.class);
-        startActivity(usageIntent);
+    private void openApplianceUsage() {
+        Intent applianceUsageIntent = new Intent(this, ApplianceUsage.class );
+        startActivity(applianceUsageIntent);
     }
 
+    private void openExit() {
+        Intent applianceUsageIntent = new Intent(this, Exit.class );
+        startActivity(applianceUsageIntent);
+    }
+
+    private void openUserHistory() {
+        Intent userHistoryIntent = new Intent(this, UserHistory.class );
+        startActivity(userHistoryIntent);
+    }
 
     //kill activity code taken from https://www.instructables.com/id/HelloWorld-With-Exit-Button-AndroidStudio/
-    private void killActivity() {
-//        finish();
-//        System.exit(0);
-        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Exit");
-        builder.setMessage("Do you want to exit?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
-                finish();
-            }
-    });
-	    builder.setNegativeButton("No, go back to main menu", new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialogInterface, int i)
-        {
-            dialogInterface.dismiss();
-        }
-});
 
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
+
+
 }

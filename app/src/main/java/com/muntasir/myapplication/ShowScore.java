@@ -1,20 +1,19 @@
 package com.muntasir.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import java.io.PrintWriter;
+
 
 public class ShowScore extends AppCompatActivity {
 
@@ -62,7 +61,7 @@ public class ShowScore extends AppCompatActivity {
         quitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openMainMenu();
+                finish();//openMainMenu();
             }
         });
     }

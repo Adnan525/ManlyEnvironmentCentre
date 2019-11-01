@@ -1,6 +1,7 @@
 package com.muntasir.myapplication;
 
 public class PamphletQuestions {
+
     private String pamphletQuestions [] = {
             "Do you turn out the lights in empty rooms?",
             "Do you open the blind or curtain in the morning?",

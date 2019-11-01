@@ -40,7 +40,7 @@ public class QuizAudit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_audit);
 
-       // mScoreView = (TextView)findViewById(R.id.score);
+        // mScoreView = (TextView)findViewById(R.id.score);
         mQuestionView = (TextView)findViewById(R.id.question);
         mYes = (Button)findViewById(R.id.yesButton);
         mNo = (Button)findViewById(R.id.noButton);
@@ -53,10 +53,10 @@ public class QuizAudit extends AppCompatActivity {
         mYes.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                    mScore = mScore + 1;
-                    updateQuestion();
-                    //This line of code is optiona
-                    //Toast.makeText(QuizActivity.this, "correct", Toast.LENGTH_SHORT).show();
+                mScore = mScore + 1;
+                updateQuestion();
+                //This line of code is optiona
+                //Toast.makeText(QuizActivity.this, "correct", Toast.LENGTH_SHORT).show();
 
 //                else {
 //                    Toast.makeText(QuizActivity.this, "wrong", Toast.LENGTH_SHORT).show();
@@ -139,6 +139,7 @@ public class QuizAudit extends AppCompatActivity {
             //System.out.println(mScore);
             Intent showScore = new Intent(this, ShowScore.class);
             showScore.putExtra("score", mScore);
+            finish();
             startActivity(showScore);
         }
         else
