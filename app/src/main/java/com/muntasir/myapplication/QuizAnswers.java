@@ -82,7 +82,7 @@ public class QuizAnswers extends AppCompatActivity {
         usageArr = rating.split(" ");
         if(usageArr.length > 21) //more than 10 //strated with empty string
         {
-            startPosition = usageArr.length - 19;
+            startPosition = usageArr.length - 20;
         }
         for(int i = startPosition; i <= usageArr.length - 2; i+=2)
         {

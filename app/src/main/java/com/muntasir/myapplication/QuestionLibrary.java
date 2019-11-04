@@ -7,7 +7,7 @@ public class QuestionLibrary {
             "How long do you use a microwave oven per day?",
             "How long do you use oven per day?",
             "How long do you use electronic stove?",
-            "How many times do you use kettle per day?",
+            "How long do you use kettle per day?",
             "How long do you use TV per day?",
             "How long do you iron per day?",
             "How long do you use hair dryer per day?",

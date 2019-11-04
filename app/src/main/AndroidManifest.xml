@@ -30,7 +30,9 @@
             android:label="The score"/>
         <activity android:name=".QuizAudit"
             android:label="Quiz"/>
-        <activity android:name=".ApplianceAnswers" />
+        <activity
+            android:name=".ApplianceAnswers"
+            android:label="Appliance input records"/>
         <activity
             android:name=".UserHistory"
             android:label="User history" />
